@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: joindevops/frontend:1.2.0
+        image: saikumargama99/frontend:1.1.0
         ports:
         - containerPort: 8080
 ---
