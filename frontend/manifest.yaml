@@ -1,42 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontends
+  name: frontend
   namespace: expense
   # labels of deployment resource
   labels:
-    app: frontends
+    app: frontend
     tier: web
     project: expense
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontends
+      app: frontend
       tier: web
       project: expense
   template:
     metadata:
       labels:
-        app: frontends
+        app: frontend
         tier: web
         project: expense
     spec:
       containers:
       - name: nginx
-        image: saikumargama99/frontends:1.1.0
+        image: saikumargama99/frontend:1.2.0
         ports:
         - containerPort: 8080
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: frontends
+  name: frontend
   namespace: expense
 spec:
   type: LoadBalancer
   selector: # labels are used as selectors
-    app: frontends
+    app: frontend
     tier: web
     project: expense
   ports:
