@@ -13,18 +13,20 @@ spec:
   selector:
     matchLabels:
       app: frontend
-      tier: frontend
+      tier: web
       project: expense
   template:
     metadata:
       labels:
         app: frontend
-        tier: frontend
+        tier: web
         project: expense
     spec:
       containers:
       - name: nginx
-        image: saikumargama99/frontend:1.0.0
+        image: joindevops/frontend:1.2.0
+        ports:
+        - containerPort: 8080
 ---
 kind: Service
 apiVersion: v1
@@ -40,4 +42,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80 # service port
-    targetPort: 80
+    targetPort: 8080
